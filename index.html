@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Green Earth</title>
+  <!-- daisy and tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body>
+  <header>
+    <!-- navBar -->
+    <nav>
+      <div class="navbar bg-base-100 shadow-sm bg-[#15803D] px-10">
+        <div class="navbar-start">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+              </svg>
+            </div>
+            <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+              <li><a>About</a></li>
+              <li><a href="">Gallery</a></li>
+              <li><a>Plant a Tree</a></li>
+            </ul>
+          </div>
+          <a class="btn btn-ghost text-xl text-[#ffffff] hover:bg-green-600 border-none">Green Earth</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+          <ul class="menu menu-horizontal px-1">
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none"><a>About</a></li>
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none"><a>Gallery</a></li>
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none transition duration-300">
+              <a>Plant a Tree</a>
+            </li>
+          </ul>
+        </div>
+        <div class="navbar-end">
+          <button><a
+              class="btn text-[#15803d] bg-[#facc15] rounded-3xl border-none transition transform active:scale-95 duration-150 active:bg-[#eab308]">Plant
+              a Tree</a></button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Banner part -->
+    <section class="flex justify-between items-center hero bg-[#cff0dc] min-h-50">
+      <div>
+        <img src="./assets/hero-leaf1.png" alt="leaf">
+      </div>
+      <div class="text-center">
+        <h2 class="text-2xl font-bold mb-2">Plant a Tree, Grow a Future</h2>
+        <p class="mb-2">Join our mission to plant 1 million trees and make the Earth greener for future
+          generations.</p>
+        <button
+          class="btn text-[#15803d] bg-[#facc15] rounded-3xl border-none transition transform active:scale-95 duration-150 active:bg-[#eab308]">Get
+          Involved</button>
+      </div>
+      <div>
+        <img src="./assets/hero-leaf2.png" alt="leaf">
+      </div>
+    </section>
+  </header>
+
+  <!-- main card  -->
+  <main>
+    <section class="w-11/12 mx-auto bg-slate-200 min-h-[400px] grid grid-cols-5 gap-4">
+
+      <div id="Categories-Parent" class="col-span-1 bg-green-300 p-4">
+        <h2>Categories</h2>
+      </div>
+
+      <div id="card-container" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+      </div>
+
+      <div class="col-span-1 p-4">
+      </div>
+    </section>
+  </main>
+
+  <!-- JS file -->
+  <script src="script.js"></script>
+</body>
+
+</html>
