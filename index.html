@@ -53,7 +53,7 @@
     <section class="flex justify-between items-center hero bg-[#cff0dc] min-h-50">
       <div><img src="./assets/hero-leaf1.png" alt="leaf"></div>
       <div class="text-center">
-        <h2 class="text-2xl font-bold mb-2">Plant a Tree, Grow a Future</h2>
+        <h2 class="text-3xl font-bold mb-2">Plant a Tree, Grow a Future</h2>
         <p class="mb-2">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
         <button
           class="btn text-[#15803d] bg-[#facc15] rounded-3xl border-none transition transform active:scale-95 duration-150 active:bg-[#eab308]">Get
@@ -75,7 +75,11 @@
       </div>
 
       <!-- Cards -->
-      <div id="card-container" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4"></div>
+      <div id="card-container" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+        <div id="loading-spinner" class="col-span-full flex justify-center my-10 hidden">
+          <span class="loading loading-dots loading-xl"></span>
+        </div>
+      </div>
 
       <!-- Cart -->
       <div class="col-span-1 p-4">

@@ -15,12 +15,19 @@ const modalDesc = document.getElementById("modal-plant-description");
 const modalPrice = document.getElementById("modal-plant-price");
 
 // Fetch Plants
+const spinner = document.getElementById("loading-spinner");
+
 const loadData = () => {
+  spinner.classList.remove("hidden"); // show spinner
+
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
     .then((data) => {
       allPlants = data.plants;
       displayData(allPlants);
+    })
+    .finally(() => {
+      spinner.classList.add("hidden"); // hide spinner
     });
 };
 
@@ -60,16 +67,21 @@ const setActiveCategory = (activeBtn) => {
 
 // Display Plant Cards
 const displayData = (plants) => {
-  cardContainer.innerHTML = "";
-  if (!plants.length) {
-    cardContainer.innerHTML = `<p class="text-center col-span-full text-red-500">No plants found!</p>`;
-    return;
-  }
+  spinner.classList.remove("hidden");
 
-  plants.forEach((plant) => {
-    const cardDiv = document.createElement("div");
-    cardDiv.className = "card bg-base-100 h-120 shadow-sm rounded-lg";
-    cardDiv.innerHTML = `
+  setTimeout(() => {
+    cardContainer.innerHTML = "";
+
+    if (!plants.length) {
+      cardContainer.innerHTML = `<p class="text-center col-span-full text-red-500">No plants found!</p>`;
+      spinner.classList.add("hidden");
+      return;
+    }
+
+    plants.forEach((plant) => {
+      const cardDiv = document.createElement("div");
+      cardDiv.className = "card bg-base-100 h-120 shadow-sm rounded-lg";
+      cardDiv.innerHTML = `
       <figure class="px-4 pt-4">
         <img src="${plant.image}" alt="${plant.name}" class="rounded-md h-48 w-full object-cover"/>
       </figure>
@@ -77,33 +89,40 @@ const displayData = (plants) => {
         <h2 class="card-title cursor-pointer text-blue-600 hover:underline">${plant.name}</h2>
         <p>${plant.description}</p>
         <div class='flex justify-between items-center mb-2'>
-          <button class='btn btn-sm rounded-lg text-emerald-500 border-emerald-500'>${plant.category}</button>
-          <p class="text-lg font-semibold text-[#15803D] px-3 py-1 rounded-full">${plant.price}৳</p>
+          <button class=' w-auto btn btn-sm rounded-lg text-emerald-500 border-emerald-500'>${plant.category}</button>
+            <div class="flex-none">
+          <p class="text-lg font-semibold text-[#15803D] px-3 py-1 ">${plant.price}৳</p>
+          </div>
+
         </div>
         <button class="btn add-to-cart-btn rounded-3xl bg-[#15803D] w-full text-white">Add to Cart</button>
       </div>
     `;
-    cardContainer.appendChild(cardDiv);
+      cardContainer.appendChild(cardDiv);
 
-    // Modal open on card title
-    cardDiv.querySelector(".card-title").addEventListener("click", () => {
-      modalName.textContent = plant.name;
-      modalImage.src = plant.image;
-      modalDesc.textContent = plant.description;
-      modalPrice.textContent = plant.price;
-      modalCheckbox.checked = true;
+      // Modal open on card title
+      cardDiv.querySelector(".card-title").addEventListener("click", () => {
+        modalName.textContent = plant.name;
+        modalImage.src = plant.image;
+        modalDesc.textContent = plant.description;
+        modalPrice.textContent = plant.price;
+        modalCheckbox.checked = true;
+      });
+
+      // Add to Cart button click
+      const addBtn = cardDiv.querySelector(".add-to-cart-btn");
+      addBtn.addEventListener("click", () => addToCart(plant));
     });
-
-    // Add to Cart button click
-    const addBtn = cardDiv.querySelector(".add-to-cart-btn");
-    addBtn.addEventListener("click", () => addToCart(plant));
-  });
+    // Hide spinner after cards render
+    spinner.classList.add("hidden");
+  }, 300); // small delay to see spinner
 };
 
-// Add to Cart
+// Add to Cart with alert
 const addToCart = (plant) => {
   cart.push(plant);
   updateCart();
+  alert(`${plant.name} has been added to your cart!`);
 };
 
 // Remove from Cart
@@ -123,7 +142,7 @@ const updateCart = () => {
       "flex justify-between items-center bg-green-100 p-2 rounded-md";
     div.innerHTML = `
    <div class="flex flex-col">
-    <span class="font-medium">${item.name}</span>
+    <span class="font-bold">${item.name}</span>
     <span class="font-semibold text-[#15803D]">৳${item.price}</span>
   </div>
       <button class="text-red-500 font-bold">❌</button>
