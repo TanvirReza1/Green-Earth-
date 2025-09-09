@@ -46,13 +46,21 @@ const displayCategories = (categories) => {
     btn.className =
       "btn w-full mb-2 text-black hover:bg-[#15803D] hover:text-white transition duration-300";
     btn.textContent = cat.category_name;
+
     btn.addEventListener("click", () => {
-      const filtered = allPlants.filter(
-        (p) => p.category === cat.category_name
-      );
-      displayData(filtered);
-      setActiveCategory(btn);
+      spinner.classList.remove("hidden");
+      fetch(`https://openapi.programming-hero.com/api/category/${cat.id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          displayData(data.plants || []); // ✅ fixed (was data.data)
+          setActiveCategory(btn);
+        })
+        .catch(() => {
+          cardContainer.innerHTML = `<p class="text-center col-span-full text-red-500">Failed to load category data!</p>`;
+        })
+        .finally(() => spinner.classList.add("hidden"));
     });
+
     categoryContainer.appendChild(btn);
   });
 };
