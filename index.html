@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Green Earth</title>
-  <!-- daisy and tailwind -->
   <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 
 <body>
+  <!-- Navbar -->
   <header>
-    <!-- navBar -->
     <nav>
       <div class="navbar bg-base-100 shadow-sm bg-[#15803D] px-10">
         <div class="navbar-start">
@@ -33,57 +32,77 @@
         </div>
         <div class="navbar-center hidden lg:flex">
           <ul class="menu menu-horizontal px-1">
-            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none"><a>About</a></li>
-            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none"><a>Gallery</a></li>
-            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#15803d] border-none transition duration-300">
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#171580] border-none"><a>About</a></li>
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#151780] border-none"><a>Gallery</a></li>
+            <li class="text-[#ffffff] hover:bg-[#049e32] hover:text-[#450f9c] border-none transition duration-300">
               <a>Plant a Tree</a>
             </li>
           </ul>
         </div>
         <div class="navbar-end">
-          <button><a
+          <button>
+            <a
               class="btn text-[#15803d] bg-[#facc15] rounded-3xl border-none transition transform active:scale-95 duration-150 active:bg-[#eab308]">Plant
-              a Tree</a></button>
+              a Tree</a>
+          </button>
         </div>
       </div>
     </nav>
 
-    <!-- Banner part -->
+    <!-- Banner -->
     <section class="flex justify-between items-center hero bg-[#cff0dc] min-h-50">
-      <div>
-        <img src="./assets/hero-leaf1.png" alt="leaf">
-      </div>
+      <div><img src="./assets/hero-leaf1.png" alt="leaf"></div>
       <div class="text-center">
         <h2 class="text-2xl font-bold mb-2">Plant a Tree, Grow a Future</h2>
-        <p class="mb-2">Join our mission to plant 1 million trees and make the Earth greener for future
-          generations.</p>
+        <p class="mb-2">Join our mission to plant 1 million trees and make the Earth greener for future generations.</p>
         <button
           class="btn text-[#15803d] bg-[#facc15] rounded-3xl border-none transition transform active:scale-95 duration-150 active:bg-[#eab308]">Get
           Involved</button>
       </div>
-      <div>
-        <img src="./assets/hero-leaf2.png" alt="leaf">
-      </div>
+      <div><img src="./assets/hero-leaf2.png" alt="leaf"></div>
     </section>
   </header>
 
-  <!-- main card  -->
+  <!-- Main Section -->
   <main>
-    <section class="w-11/12 mx-auto bg-slate-200 min-h-[400px] grid grid-cols-5 gap-4">
+    <h2 class="text-center mb-[40px] mt-[100px] text-[#1F2937] text-[32px] font-semibold">Choose Your Trees</h2>
+    <section class="w-11/12 mx-auto min-h-[400px] grid grid-cols-5 gap-4">
 
-      <div id="Categories-Parent" class="col-span-1 bg-green-300 p-4">
-        <h2>Categories</h2>
-      </div>
-
-      <div id="card-container" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
-      </div>
-
+      <!-- Categories -->
       <div class="col-span-1 p-4">
+        <h2 class="text-lg font-bold mb-2">Categories</h2>
+        <div id="Categories-Parent"></div>
       </div>
+
+      <!-- Cards -->
+      <div id="card-container" class="col-span-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4"></div>
+
+      <!-- Cart -->
+      <div class="col-span-1 p-4">
+        <h2 class="text-lg font-bold mb-2">Your Cart</h2>
+        <div id="cart-items" class="flex flex-col gap-2"></div>
+        <div class="mt-4 font-semibold text-lg">
+          Total: ৳<span id="cart-total">0</span>
+        </div>
+      </div>
+
     </section>
   </main>
 
-  <!-- JS file -->
+  <!-- Modal -->
+  <input type="checkbox" id="plant-modal" class="modal-toggle" />
+  <div class="modal">
+    <div class="modal-box relative max-w-xl">
+      <label for="plant-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+      <h3 class="text-lg font-bold mb-2" id="modal-plant-name"></h3>
+      <img id="modal-plant-image" class="rounded-md mb-2 w-full h-48 object-cover" alt="plant">
+      <p id="modal-plant-description"></p>
+      <p class="mt-2 font-semibold text-[#15803D]">Price: ৳<span id="modal-plant-price"></span></p>
+
+    </div>
+  </div>
+
+  <!-- JS -->
   <script src="script.js"></script>
 </body>
 
