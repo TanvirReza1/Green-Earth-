@@ -13,6 +13,7 @@ const modalName = document.getElementById("modal-plant-name");
 const modalImage = document.getElementById("modal-plant-image");
 const modalDesc = document.getElementById("modal-plant-description");
 const modalPrice = document.getElementById("modal-plant-price");
+const modalCategory = document.getElementById("modal-plant-category"); 
 
 // Fetch Plants
 const spinner = document.getElementById("loading-spinner");
@@ -114,6 +115,7 @@ const displayData = (plants) => {
         modalImage.src = plant.image;
         modalDesc.textContent = plant.description;
         modalPrice.textContent = plant.price;
+        modalCategory.textContent = plant.category;
         modalCheckbox.checked = true;
       });
 
