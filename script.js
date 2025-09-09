@@ -13,7 +13,7 @@ const modalName = document.getElementById("modal-plant-name");
 const modalImage = document.getElementById("modal-plant-image");
 const modalDesc = document.getElementById("modal-plant-description");
 const modalPrice = document.getElementById("modal-plant-price");
-const modalCategory = document.getElementById("modal-plant-category");
+const modalCategory = document.getElementById("modal-plant-category"); 
 
 // Fetch Plants
 const spinner = document.getElementById("loading-spinner");
@@ -53,7 +53,7 @@ const displayCategories = (categories) => {
       fetch(`https://openapi.programming-hero.com/api/category/${cat.id}`)
         .then((res) => res.json())
         .then((data) => {
-          displayData(data.plants || []);
+          displayData(data.plants || []); 
           setActiveCategory(btn);
         })
         .catch(() => {
@@ -92,28 +92,15 @@ const displayData = (plants) => {
       cardDiv.className = "card bg-base-100 h-120 shadow-sm rounded-lg";
       cardDiv.innerHTML = `
       <figure class="px-4 pt-4">
-  <img src="${
-    plant.image.startsWith("http")
-      ? plant.image.replace("http://", "https://")
-      : "https://openapi.programming-hero.com/" + plant.image
-  }" 
-       alt="${plant.name}" 
-       class="rounded-md h-48 w-full object-cover"/>
-</figure>
-
+        <img src="${plant.image}" alt="${plant.name}" class="rounded-md h-48 w-full object-cover"/>
+      </figure>
       <div class="card-body">
-        <h2 class="card-title cursor-pointer text-blue-600 hover:underline">${
-          plant.name
-        }</h2>
+        <h2 class="card-title cursor-pointer text-blue-600 hover:underline">${plant.name}</h2>
         <p>${plant.description}</p>
         <div class='flex justify-between items-center mb-2'>
-          <button class=' w-auto btn btn-sm rounded-lg text-emerald-500 border-emerald-500'>${
-            plant.category
-          }</button>
+          <button class=' w-auto btn btn-sm rounded-lg text-emerald-500 border-emerald-500'>${plant.category}</button>
             <div class="flex-none">
-          <p class="text-lg font-semibold text-[#15803D] px-3 py-1 ">${
-            plant.price
-          }৳</p>
+          <p class="text-lg font-semibold text-[#15803D] px-3 py-1 ">${plant.price}৳</p>
           </div>
 
         </div>
