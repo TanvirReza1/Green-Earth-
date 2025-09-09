@@ -122,7 +122,10 @@ const updateCart = () => {
     div.className =
       "flex justify-between items-center bg-green-100 p-2 rounded-md";
     div.innerHTML = `
-      <span>${item.name}</span>
+   <div class="flex flex-col">
+    <span class="font-medium">${item.name}</span>
+    <span class="font-semibold text-[#15803D]">৳${item.price}</span>
+  </div>
       <button class="text-red-500 font-bold">❌</button>
     `;
     div
